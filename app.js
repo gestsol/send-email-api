@@ -31,7 +31,7 @@ app.use(async (req, res, next) => {
 app.use(cors({origin: '*'}));
 app.use(express.json());
 
-app.use('/send-email', emailRoute);
+app.use('/email/send-email', emailRoute);
 
 app.use(errorController);
 

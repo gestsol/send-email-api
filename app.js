@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const { EmailService } = require('./utils/email');
 const emailRoute = require('./routes/email.route');
+const errorController = require('./controllers/error.controller');
 
 dotenv.config({ path: './.env' });
 
@@ -32,13 +33,7 @@ app.use(express.json());
 
 app.use('/send-email', emailRoute);
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({
-    status: 500,
-    message: err.message,
-  });
-});
+app.use(errorController);
 
 const server = app.listen(port, () => {
   console.log(`app running on port ${port}`);

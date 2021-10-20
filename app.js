@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -12,6 +13,8 @@ const emailService = new EmailService(process.env.SMTP_EMAIL, process.env.SMTP_P
 const app = express();
 
 const port = process.env.PORT;
+
+app.use('/email', express.static(path.join(__dirname, "public")));
 
 app.use(async (req, res, next) => {
   try {

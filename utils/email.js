@@ -10,7 +10,7 @@ class Email {
 
   formatEmail() {
     return {
-      from: `${process.env.SENDER_NAME} <${process.env.SMTP_EMAIL}>`,
+      from: `${process.env.EMAIL_SMTP_SENDER_NAME} <${process.env.EMAIL_SMTP_EMAIL}>`,
       to: this.to,
       subject: this.subject,
       html: this.html,

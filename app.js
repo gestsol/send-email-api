@@ -8,11 +8,11 @@ const errorController = require('./controllers/error.controller');
 
 dotenv.config({ path: './.env' });
 
-const emailService = new EmailService(process.env.SMTP_EMAIL, process.env.SMTP_PASSWORD);
+const emailService = new EmailService(process.env.EMAIL_SMTP_EMAIL, process.env.EMAIL_SMTP_PASSWORD);
 
 const app = express();
 
-const port = process.env.PORT;
+const port = process.env.EMAIL_SMTP_PORT;
 
 app.use('/email', express.static(path.join(__dirname, "public")));
 

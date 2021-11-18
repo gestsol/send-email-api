@@ -3,7 +3,7 @@ const AppError = require('../utils/appError');
 
 exports.sendEmail = async (req, res, next) => {
   try {
-    const { to, subject, content } = req.body;
+    const { to, subject, content, cc, bcc } = req.body;
 
     if (!to || to === "") {
       return next(new AppError('To field is missing', 400));
@@ -17,7 +17,7 @@ exports.sendEmail = async (req, res, next) => {
       return next(new AppError('Content field is missing', 400));
     }
 
-    const email = new Email(to, subject, content);
+    const email = new Email(to, subject, content, cc, bcc);
   
     await res.emailService.sendEmail(email);
 
